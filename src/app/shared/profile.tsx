@@ -26,12 +26,13 @@ const AuthorProfilePage = () => {
   // Cuando cambia el userId, obtener la imagen actualizada desde el backend
   useEffect(() => {
     if (!userId) return;
-    fetch(`http://localhost:3000/api/users`)
+    fetch(`https://blackrockdpto.net/api/users`)
       .then(res => res.json())
       .then(data => {
         const user = data.users.find((u: any) => u.id === userId);
         if (user?.profileImage) {
-          setProfileImage(user.profileImage);
+ const urlConTimestamp = `${user?.profileImage}?t=${Date.now()}`;
+          setProfileImage(urlConTimestamp);
           // Actualiza también en localStorage para mantener sincronizado
           const storedUser = localStorage.getItem('userData');
           if (storedUser) {
@@ -49,7 +50,7 @@ const AuthorProfilePage = () => {
       const formData = new FormData();
       formData.append('image', file);
 
-      const res = await fetch(`http://localhost:3000/api/users/${userId}/profile-image`, {
+      const res = await fetch(`https://blackrockdpto.net/api/users/${userId}/profile-image`, {
         method: 'POST',
         body: formData,
       });

@@ -51,7 +51,7 @@ export default function MinimalScreen() {
   // 🔹 Obtener la imagen de perfil desde el backend cuando cambia el userId
   useEffect(() => {
     if (!userId) return;
-    fetch(`http://localhost:3000/api/users`)
+    fetch(`https://blackrockdpto.net/api/users`)
       .then((res) => res.json())
       .then((data) => {
         const user = data.users.find((u: any) => u.id === userId);

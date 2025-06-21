@@ -53,7 +53,7 @@ export default function Sidebar({ className }: { className?: string }) {
   // 🔹 Sincronizar imagen de perfil con backend si hay userId
   useEffect(() => {
     if (!user?.id) return;
-    fetch(`http://localhost:3000/api/users`)
+    fetch(`https://blackrockdpto.net/api/users`)
       .then((res) => res.json())
       .then((data) => {
         const backendUser = data.users.find((u: any) => u.id === user.id);

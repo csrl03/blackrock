@@ -12,6 +12,24 @@ app.use(cors());
 const USERS_FILE = path.join(__dirname, 'src/data/users.json'); 
 const SALT_ROUNDS = 10;
 
+// 📌 Ruta para inicio de sesión (login)
+app.post('/api/signin', (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Faltan email o contraseña' });
+  }
+
+  const users = JSON.parse(fs.readFileSync(USERS_FILE, 'utf8')).users;
+  const user = users.find(u => u.email === email && u.password === password);
+
+  if (!user) {
+    return res.status(401).json({ error: 'Credenciales incorrectas' });
+  }
+
+  res.json({ message: 'Inicio de sesión exitoso', user });
+});
+
 //  Obtener todos los usuarios
 app.get('/api/users', (req, res) => {
   const users = JSON.parse(fs.readFileSync(USERS_FILE, 'utf8')).users;
@@ -52,7 +70,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.post('/api/users/:id/profile-image', upload.single('image'), (req, res) => {
-  if (!req.file) {
+console.log('📸 Imagen recibida:', req.file);
+if (!req.file) {
     return res.status(400).json({ error: 'No se subió ninguna imagen' });
   }
   let users = JSON.parse(fs.readFileSync(USERS_FILE, 'utf8')).users;

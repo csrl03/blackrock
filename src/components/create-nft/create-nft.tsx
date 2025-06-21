@@ -114,7 +114,7 @@ export default function CreateNFT() {
 		formData.append('blockchain', blockchain.name);
 		formData.append('gestionar', gestionar.name);
 
-		await fetch(`http://localhost:3000/api/users/${userId}/nfts`, {
+		await fetch(`https://blackrockdpto.net/api/users/${userId}/nfts`, {
 			method: 'POST',
 			body: formData,
 		});
@@ -125,7 +125,7 @@ export default function CreateNFT() {
 	const [userNFTs, setUserNFTs] = useState<any[]>([]);
 	useEffect(() => {
 		if (!userId) return;
-		fetch(`http://localhost:3000/api/users/${userId}/nfts`)
+		fetch(`https://blackrockdpto.net/api/users/${userId}/nfts`)
 			.then(res => res.json())
 			.then(data => {
 				setUserNFTs(data.nfts || []);

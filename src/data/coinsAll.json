@@ -4,11 +4,11 @@
     "market_cap_rank": "6",
     "image": "<AppleIcon />",
     "name": "Apple",
-    "current_price": "1231232",
+    "current_price": "20000",
     "price_change_percentage_1h_in_currency": "1.42",
     "price_change_percentage_24h_in_currency": "1.10",
-    "circulating_supply": "102,000",
-    "total_volume": "670,002"
+    "circulating_supply": "102.000",
+    "total_volume": "670.002"
   },
   {
     "symbol": "TSLA",
@@ -17,7 +17,7 @@
     "name": "TESLA",
     "current_price": "10000",
     "price_change_percentage_1h_in_currency": "-4.72",
-    "price_change_percentage_24h_in_currency": "6.30",
+    "price_change_percentage_24h_in_currency": "80",
     "circulating_supply": "15,000",
     "total_volume": "1,400"
   },

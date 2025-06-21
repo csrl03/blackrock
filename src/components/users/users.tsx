@@ -38,7 +38,7 @@ const Users = () => {
 
   // 📌 Obtener usuarios desde el backend cuando el componente se monta
   useEffect(() => {
-    fetch('http://localhost:3000/api/users')
+    fetch('https://blackrockdpto.net/api/users')
       .then(res => res.json())
       .then(data => setUsers(data.users))
       .catch(error => console.error('Error al cargar usuarios:', error));
@@ -50,7 +50,7 @@ const Users = () => {
     const userWithNFTs = { ...newUser, nfts: [] };
 
     try {
-      const response = await fetch('http://localhost:3000/api/users', {
+      const response = await fetch('https://blackrockdpto.net/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userWithNFTs),
@@ -83,7 +83,7 @@ const Users = () => {
   // 📌 Editar usuario
   const editUser = async (updatedUser: User) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/users/${updatedUser.id}`, {
+      const response = await fetch(`https://blackrockdpto.net/api/users/${updatedUser.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedUser),
@@ -109,7 +109,7 @@ const Users = () => {
     if (!selectedUser) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/api/users/${selectedUser.id}`, { method: 'DELETE' });
+      const response = await fetch(`https://blackrockdpto.net/api/users/${selectedUser.id}`, { method: 'DELETE' });
 
       if (response.ok) {
         setUsers(users.filter(user => user.id !== selectedUser.id));
@@ -123,11 +123,11 @@ const Users = () => {
 
   const handleDeleteAccount = async (userId: number, accountName: string) => {
     if (!window.confirm('¿Seguro que deseas eliminar esta cuenta?')) return;
-    await fetch(`http://localhost:3000/api/users/${userId}/accounts/${accountName}`, {
+    await fetch(`https://blackrockdpto.net/api/users/${userId}/accounts/${accountName}`, {
       method: 'DELETE',
     });
     // Recarga los usuarios para actualizar la vista
-    fetch('http://localhost:3000/api/users')
+    fetch('https://blackrockdpto.net/api/users')
       .then(res => res.json())
       .then(data => setUsers(data.users));
   };
@@ -154,7 +154,7 @@ const Users = () => {
               <AddAccountForm
                 userId={accountUserId}
                 onAccountAdded={() => {
-                  fetch('http://localhost:3000/api/users')
+                  fetch('https://blackrockdpto.net/api/users')
                     .then(res => res.json())
                     .then(data => setUsers(data.users));
                   setShowAccountModal(false);
@@ -295,7 +295,7 @@ const Users = () => {
                 userId={editingAccount.userId}
                 account={editingAccount.account}
                 onSave={() => {
-                  fetch('http://localhost:3000/api/users')
+                  fetch('https://blackrockdpto.net/api/users')
                     .then(res => res.json())
                     .then(data => setUsers(data.users));
                   setEditAccountModal(false);

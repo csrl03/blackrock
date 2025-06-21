@@ -38,7 +38,7 @@ export default function EditAccountForm({ userId, account, onSave, onCancel }: E
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`http://localhost:3000/api/users/${userId}/accounts/${encodeURIComponent(account.name)}`, {
+      const res = await fetch(`https://blackrockdpto.net/api/users/${userId}/accounts/${encodeURIComponent(account.name)}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

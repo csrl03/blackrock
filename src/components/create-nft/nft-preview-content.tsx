@@ -19,7 +19,7 @@ export default function PreviewContent() {
 
   useEffect(() => {
     if (!userId) return;
-    fetch(`http://localhost:3000/api/users`)
+    fetch(`https://blackrockdpto.net/api/users`)
       .then((res) => res.json())
       .then((data) => {
         const user = data.users.find((u: any) => u.id === userId);

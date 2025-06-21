@@ -14,7 +14,7 @@ export default function AddAccountForm({ userId, onAccountAdded }: Props) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await fetch(`http://localhost:3000/api/users/${userId}/accounts`, {
+    await fetch(`https://blackrockdpto.net/api/users/${userId}/accounts`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

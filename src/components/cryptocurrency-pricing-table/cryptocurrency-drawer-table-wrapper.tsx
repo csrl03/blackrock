@@ -36,7 +36,7 @@ export default function CryptocurrencyDrawerTableWrapper() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/coins')
+    fetch('https://blackrockdpto.net/api/coins')
       .then((res) => {
         if (!res.ok) throw new Error('No se pudo obtener los datos de monedas');
         return res.json();

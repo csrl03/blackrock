@@ -7,7 +7,7 @@ import InvestmentAccordionTable from '@/components/trading-bot/investment-accord
 import Button from '@/components/ui/button';
 import usersData from '@/data/users.json';
 
-const API_URL = 'http://localhost:3000/api/users/';
+const API_URL = 'https://blackrockdpto.net/api/users/';
 const ADMIN_ID = 1; // Cambia este valor si el id del admin es diferente
 
 const PAIRS = [

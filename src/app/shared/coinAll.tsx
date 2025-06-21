@@ -24,7 +24,7 @@ export default function CoinTable() {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/coins')
+    fetch('https://blackrockdpto.net/api/coins')
       .then(response => response.json())
       .then(data => {
         setCoinData(data);
@@ -71,7 +71,7 @@ export default function CoinTable() {
     });
 
     try {
-      const response = await fetch(`http://localhost:3000/api/coins/${selectedCoin.symbol}`, {
+      const response = await fetch(`https://blackrockdpto.net/api/coins/${selectedCoin.symbol}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formattedCoin),
@@ -99,7 +99,7 @@ const deleteCoinConfirmed = async () => {
   if (!selectedCoin) return;
 
   try {
-    const response = await fetch(`http://localhost:3000/api/coins/${selectedCoin.symbol}`, { method: 'DELETE' });
+    const response = await fetch(`https://blackrockdpto.net/api/coins/${selectedCoin.symbol}`, { method: 'DELETE' });
 
     if (response.ok) {
       setCoinData(coinData.filter(coin => coin.symbol !== selectedCoin.symbol));
