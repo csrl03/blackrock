@@ -521,18 +521,22 @@ export default function InvestmentTable() {
             </h3>
             <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
               {/* s */}
-              <select
-                name="userId"
-                className="col-span-2 rounded border px-3 py-2 text-sm dark:bg-gray-700 dark:text-white"
-                required
-                value={selectedUserId || ''}
-                onChange={handleUserChange}
-              >
-                <option value="" disabled>Seleccionar usuario</option>
-                {users.map(user => (
-                  <option key={user.id} value={user.id}>{user.username}</option>
-                ))}
-              </select>
+              <div className="col-span-2 max-h-60 overflow-y-auto">
+                <select
+                  name="userId"
+                  className="w-full rounded border px-3 py-2 text-sm dark:bg-gray-700 dark:text-white"
+                  required
+                  value={selectedUserId || ''}
+                  onChange={handleUserChange}
+                  size={users.length > 8 ? 8 : undefined} // Muestra scroll si hay muchos usuarios
+                  style={{ minHeight: '40px' }}
+                >
+                  <option value="" disabled>Seleccionar usuario</option>
+                  {users.map(user => (
+                    <option key={user.id} value={user.id}>{user.username}</option>
+                  ))}
+                </select>
+              </div>
               {/* Campo de texto en vez de select para mercado */}
               <input
                 name="timeOfInvestment"
