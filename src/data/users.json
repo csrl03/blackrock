@@ -1,0 +1,353 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "usuario1@email.com",
+      "role": "admin",
+      "password": "administrador",
+      "balance": 5555,
+      "balanceNFT": 0,
+      "accounts": [
+        {
+          "name": "22",
+          "balance": 2,
+          "valuation": 2,
+          "availableFunds": 2
+        },
+        {
+          "name": "cuenta modificada",
+          "balance": 5000,
+          "valuation": 65,
+          "availableFunds": 1212
+        },
+        {
+          "name": "nueva cuetna",
+          "balance": 600,
+          "valuation": 100,
+          "availableFunds": 500
+        },
+        {
+          "name": "segunda cuenta",
+          "balance": 14444,
+          "valuation": 21,
+          "availableFunds": 5000
+        }
+      ],
+      "nfts": [
+        {
+          "price": "112313",
+          "name": "123123",
+          "description": "23123123123",
+          "externalLink": "12313123",
+          "unlocked": false,
+          "unlockContent": "",
+          "explicit": false,
+          "blockchain": "Ethereum",
+          "gestionar": "Binance",
+          "imageUrl": "/nft-images/1-1750398049712.jpg",
+          "createdAt": "2025-06-20T05:40:49.727Z"
+        },
+        {
+          "price": "8585858",
+          "name": "alejandra",
+          "description": "123456",
+          "externalLink": "si",
+          "unlocked": false,
+          "unlockContent": "",
+          "explicit": false,
+          "blockchain": "Ethereum",
+          "gestionar": "Binance",
+          "imageUrl": "/nft-images/1-1750398143937.jpg",
+          "createdAt": "2025-06-20T05:42:23.940Z"
+        },
+        {
+          "price": "8585858",
+          "name": "Proyecto1 ",
+          "description": "123456",
+          "externalLink": "si",
+          "unlocked": false,
+          "unlockContent": "",
+          "explicit": false,
+          "blockchain": "Ethereum",
+          "gestionar": "Binance",
+          "imageUrl": "/nft-images/1-1750398482675.jpg",
+          "createdAt": "2025-06-20T05:48:02.677Z"
+        }
+      ],
+      "profileImage": "/profile-images/1-1750341289372.jpg",
+      "TradingBots": [
+        {
+          "timeOfInvestment": "Ecopetrol",
+          "investment": "400",
+          "totalProfit": "200",
+          "transactions": "15",
+          "amountPerInvestment": "45",
+          "price": "240",
+          "avgBuyPrice": "110",
+          "bought": "300"
+        },
+        {
+          "timeOfInvestment": "NVIDIA",
+          "investment": "2200",
+          "totalProfit": "2100",
+          "transactions": "21",
+          "amountPerInvestment": "42",
+          "price": "424",
+          "avgBuyPrice": "110",
+          "bought": "300"
+        },
+        {
+          "timeOfInvestment": "NVIDIA",
+          "investment": "2200",
+          "totalProfit": "2100",
+          "transactions": "21",
+          "amountPerInvestment": "42",
+          "price": "424",
+          "avgBuyPrice": "110",
+          "bought": "300"
+        },
+        {
+          "timeOfInvestment": "NVIDIA",
+          "investment": "2200",
+          "totalProfit": "2100",
+          "transactions": "21",
+          "amountPerInvestment": "42",
+          "price": "424",
+          "avgBuyPrice": "110",
+          "bought": "300"
+        },
+        {
+          "timeOfInvestment": "Tesla",
+          "investment": "44444",
+          "totalProfit": "12311",
+          "transactions": "21",
+          "amountPerInvestment": "122",
+          "price": "424",
+          "avgBuyPrice": "110",
+          "bought": "300"
+        },
+        {
+          "timeOfInvestment": "Tesla",
+          "investment": "44444",
+          "totalProfit": "12311",
+          "transactions": "21",
+          "amountPerInvestment": "122",
+          "price": "424",
+          "avgBuyPrice": "110",
+          "bought": "300",
+          "userId": 3046,
+          "email": "user@gmail.com"
+        },
+        {
+          "timeOfInvestment": "Tesla",
+          "investment": "44444",
+          "totalProfit": "12311",
+          "transactions": "21",
+          "amountPerInvestment": "122",
+          "price": "424",
+          "avgBuyPrice": "110",
+          "bought": "300",
+          "userId": 8267,
+          "email": "p@gmail.com"
+        },
+        {
+          "timeOfInvestment": "Tesla",
+          "investment": "44444",
+          "totalProfit": "12311",
+          "transactions": "21",
+          "amountPerInvestment": "122",
+          "price": "424",
+          "avgBuyPrice": "110",
+          "bought": "300",
+          "userId": 3046,
+          "email": "user@gmail.com"
+        },
+        {
+          "timeOfInvestment": "Tesla",
+          "investment": "10000",
+          "totalProfit": "12311",
+          "transactions": "21",
+          "amountPerInvestment": "122",
+          "price": "424",
+          "avgBuyPrice": "110",
+          "bought": "300",
+          "userId": 3526,
+          "email": "prueba3@gmail.com"
+        },
+        {
+          "timeOfInvestment": "NVIDIA",
+          "investment": "2200",
+          "totalProfit": "12311",
+          "transactions": "21",
+          "amountPerInvestment": "122",
+          "price": "424",
+          "avgBuyPrice": "110",
+          "bought": "300",
+          "userId": 8718,
+          "email": "u@gmail.com"
+        }
+      ]
+    },
+    {
+      "id": 4246,
+      "username": "eduardo2",
+      "email": "edu@gmail.com",
+      "role": "user",
+      "password": "2",
+      "balance": 0,
+      "balanceNFT": 1,
+      "nfts": [],
+      "profileImage": "/profile-images/4246-1748880319695.webp",
+      "accounts": [
+        {
+          "name": "11111as",
+          "balance": 11,
+          "valuation": 11,
+          "availableFunds": 11
+        }
+      ],
+      "TradingBots": []
+    },
+    {
+      "id": 8267,
+      "username": "PruebaFinal",
+      "email": "p@gmail.com",
+      "role": "user",
+      "password": "123",
+      "balance": 0,
+      "balanceNFT": 1,
+      "nfts": [],
+      "accounts": [],
+      "profileImage": "/profile-images/8267-1750178398742.png",
+      "TradingBots": []
+    },
+    {
+      "id": 2096,
+      "username": "user3",
+      "email": "user3@gmail.com",
+      "role": "user",
+      "password": "123123",
+      "balance": 0,
+      "balanceNFT": 123333,
+      "nfts": [],
+      "accounts": [],
+      "profileImage": null,
+      "TradingBots": []
+    },
+    {
+      "id": 3046,
+      "username": "user4",
+      "email": "user@gmail.com",
+      "role": "user",
+      "password": "usuario4",
+      "balance": 777,
+      "balanceNFT": 40000,
+      "nfts": [],
+      "accounts": [
+        {
+          "name": "TESLA",
+          "balance": 6000,
+          "valuation": 20,
+          "availableFunds": 5000
+        }
+      ],
+      "profileImage": null,
+      "TradingBots": []
+    },
+    {
+      "id": 9437,
+      "username": "user100",
+      "email": "user5@gmail.com",
+      "role": "user",
+      "password": "123",
+      "balance": 100,
+      "balanceNFT": 7000,
+      "nfts": [],
+      "accounts": [
+        {
+          "name": "Tesla",
+          "balance": 5000,
+          "valuation": 14,
+          "availableFunds": 15000
+        }
+      ],
+      "profileImage": "/profile-images/9437-1750272418172.jpg",
+      "TradingBots": []
+    },
+    {
+      "id": 2659,
+      "username": "prueba1",
+      "email": "prueba@gmail.com",
+      "role": "user",
+      "password": "prueba",
+      "balance": 0,
+      "balanceNFT": 500,
+      "nfts": [],
+      "accounts": [],
+      "profileImage": null
+    },
+    {
+      "id": 4194,
+      "username": "Prueba2",
+      "email": "prueba2@gmail.com",
+      "role": "user",
+      "password": "123",
+      "balance": 0,
+      "balanceNFT": 5000,
+      "nfts": [],
+      "accounts": [],
+      "profileImage": null
+    },
+    {
+      "id": 3526,
+      "username": "prueba3",
+      "email": "prueba3@gmail.com",
+      "role": "user",
+      "password": "123123",
+      "balance": 123123,
+      "balanceNFT": 123123,
+      "nfts": [],
+      "accounts": [],
+      "profileImage": null
+    },
+    {
+      "id": 81,
+      "username": "prueba4",
+      "email": "prueba4@gmail.com",
+      "role": "user",
+      "password": "123123",
+      "balance": 7000,
+      "balanceNFT": 600,
+      "nfts": [],
+      "accounts": [],
+      "profileImage": null
+    },
+    {
+      "id": 8718,
+      "username": "usuarioprueba",
+      "email": "u@gmail.com",
+      "role": "user",
+      "password": "123123",
+      "balance": 700,
+      "balanceNFT": 500,
+      "nfts": [
+        {
+          "price": "12312313",
+          "name": "113123",
+          "description": "123123",
+          "externalLink": "1231231",
+          "unlocked": false,
+          "unlockContent": "",
+          "explicit": false,
+          "blockchain": "Ethereum",
+          "gestionar": "Binance",
+          "imageUrl": "/nft-images/8718-1750438215974.jpg",
+          "createdAt": "2025-06-20T16:50:15.985Z"
+        }
+      ],
+      "accounts": [],
+      "profileImage": null
+    }
+  ]
+}
