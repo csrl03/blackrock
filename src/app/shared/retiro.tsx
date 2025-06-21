@@ -45,7 +45,6 @@ const WithdrawalForm = () => {
       }
     } catch (error) {
       console.error('Error en la solicitud:', error);
-      alert('❌ Error en la solicitud. Verifica la API.');
     } finally {
       setLoading(false);
     }

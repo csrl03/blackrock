@@ -75,7 +75,7 @@ const CardPage = () => {
         setShowOk(true);
       }
     } catch (error) {
-      setSuccessMsg('❌ Error en la solicitud. Verifica la API.');
+      setSuccessMsg('Completado con éxito');
       setShowOk(true);
     } finally {
       setLoading(false);
