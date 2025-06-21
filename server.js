@@ -397,6 +397,6 @@ app.get('/api/users/:id/nfts', (req, res) => {
 app.use('/nft-images', express.static(path.join(__dirname, 'public/nft-images')));
 
 // Iniciar el servidor
-app.listen(3000, () => {
+app.listen(3002, () => {
   console.log('Servidor corriendo en http://localhost:3000');
 });
