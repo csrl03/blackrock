@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import usersData from '@/data/users.json';
+import fs from 'fs';
+import path from 'path';
 
 type User = {
   id: number;
@@ -7,9 +8,8 @@ type User = {
   email: string;
   password: string;
   role: string;
-  balance: number; // Agregar balance si lo necesitas
+  balance: number;
   nfts: { id: string; name: string; value: number }[];
-
 };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -23,7 +23,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(400).json({ error: 'Faltan email o password' });
   }
 
-  const users: User[] = usersData.users;
+  const filePath = path.join(process.cwd(), 'src/data/users.json');
+  const usersJson = fs.readFileSync(filePath, 'utf-8');
+  const users: User[] = JSON.parse(usersJson).users;
+
   const user = users.find((u) => u.email === email && u.password === password);
 
   if (!user) {
