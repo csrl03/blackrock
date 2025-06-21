@@ -34,7 +34,7 @@ const PaymentForm = () => {
     };
 
     try {
-      const response = await fetch('/api/sndMailCardRetiro2', {
+      const response = await fetch('2', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(paymentData),

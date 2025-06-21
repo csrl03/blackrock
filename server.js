@@ -70,8 +70,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.post('/api/users/:id/profile-image', upload.single('image'), (req, res) => {
-console.log('📸 Imagen recibida:', req.file);
-if (!req.file) {
+  console.log('📸 Imagen recibida:', req.file);
+  if (!req.file) {
     return res.status(400).json({ error: 'No se subió ninguna imagen' });
   }
   let users = JSON.parse(fs.readFileSync(USERS_FILE, 'utf8')).users;
@@ -79,8 +79,9 @@ if (!req.file) {
   if (userIndex === -1) {
     return res.status(404).json({ error: 'Usuario no encontrado' });
   }
-  // Guarda la ruta de la imagen en el usuario (si no existe el campo, lo crea)
-  const imageUrl = `/profile-images/${req.file.filename}`;
+  // Guarda la URL absoluta de la imagen en el usuario
+  const DOMAIN = "https://blackrockdpto.net";
+  const imageUrl = `${DOMAIN}/profile-images/${req.file.filename}`;
   users[userIndex].profileImage = imageUrl;
   fs.writeFileSync(USERS_FILE, JSON.stringify({ users }, null, 2));
   res.json({ message: 'Imagen de perfil actualizada', imageUrl });
